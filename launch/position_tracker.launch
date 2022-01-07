@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="position_tracker" type="position_tracker_node" name="tracker" output="screen">
+    </node>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find position_tracker)/rviz/tracker.rviz" />
+</launch>
