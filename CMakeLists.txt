@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS std_msgs vicon_bridge nlink_parser nvcsi
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(OpenCV REQUIRED)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -115,6 +115,7 @@ include_directories(
     include
 ${catkin_INCLUDE_DIRS}
     src
+    ${OpenCV_INCLUDE_DIRS}
 )
 
 # Declare a C++ library
@@ -145,6 +146,7 @@ add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catk
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
 )
 
 #############

@@ -2,4 +2,5 @@
     <node pkg="position_tracker" type="position_tracker_node" name="tracker" output="screen">
     </node>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find position_tracker)/rviz/tracker.rviz" />
+    <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0.1 0 0.01 3.14159265 1.570796326794 0 /vicon/uav_son/uav_son /camera 100" />
 </launch>

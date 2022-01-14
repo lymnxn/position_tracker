@@ -40,13 +40,13 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "tracker");
   ros::NodeHandle nh;
   // ros::Subscriber sub_apriltag = nh.subscribe("/apriltag_handle", 1000, apriltag_callback);
-  ros::Subscriber sub_px4_imu = nh.subscribe("/mavros/imu/data", 1000, mavros_imu_callback);
-  ros::Subscriber sub_px4_imu_raw = nh.subscribe("/mavros/imu/data_raw", 1000, mavros_imu_raw_callback);
+  // ros::Subscriber sub_px4_imu = nh.subscribe("/mavros/imu/data", 1000, mavros_imu_callback);
+  // ros::Subscriber sub_px4_imu_raw = nh.subscribe("/mavros/imu/data_raw", 1000, mavros_imu_raw_callback);
 //   ros::Subscriber sub_uwb = nh.subscribe("/nlink_linktrack_aoa_nodeframe0", 1000, uwb_callback);
-  uwbobject uwb("/nlink_linktrack_aoa_nodeframe0", nh, 1000, 2);
+  // uwbobject uwb("/nlink_linktrack_aoa_nodeframe0", nh, 1000, 2);
   viconobject tag("/vicon/uav_son/uav_son", nh, 1000, 0);
   viconobject anchor("/vicon/uwb_anchor/uwb_anchor", nh, 1000, 1);
-  apriltagobject apriltag("/apriltag_handle", nh, 1000, 3, std::vector<double>{0.1, 0.05, 0.05, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015}, "/vicon/uav_son/uav_son");//the only value in mm
+  apriltagobject apriltag("/apriltag_handle", nh, 1000, 3, std::vector<double>{1, 0.05, 0.05, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015}, "/vicon/uwb_anchor/uwb_anchor");//"/camera");//the only value in mm
   ros::MultiThreadedSpinner spinner(6);
   spinner.spin();
   return 0;
