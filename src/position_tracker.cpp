@@ -1,11 +1,11 @@
 #include "position_tracker.h"
-#include <opencv2/imgproc.hpp>
-#include <opencv2/calib3d.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/videoio.hpp>
-#include <opencv2/highgui.hpp>
+// #include <opencv2/imgproc.hpp>
+// #include <opencv2/calib3d.hpp>
+// #include <opencv2/imgcodecs.hpp>
+// #include <opencv2/videoio.hpp>
+// #include <opencv2/highgui.hpp>
 
-#include <opencv2/core/cuda.hpp>
+// #include <opencv2/core/cuda.hpp>
 
 
 viconobject::viconobject(const std::string str, ros::NodeHandle &nh, int freq, int id)
@@ -168,13 +168,13 @@ void apriltagobject::callback(const nvcsiapriltag::AprilTagDetectionArrayConstPt
                 ROS_INFO("Point: x = %f\ty = %f", det.corners[i<<1], det.corners[(i<<1)|1]);
                 points.push_back(cv::Point2f(det.corners[i<<1],det.corners[(i<<1)|1]));
             }
-            cv::Mat cammat=(cv::Mat_<double>(3,3)<<8.6640902038184322e+02,0.0,6.3950000000000000e+02,0,8.6640902038184322e+02,3.5950000000000000e+02,0.0,0.0,1.0);
-            cv::Mat cofmat=(cv::Mat_<double>(1,5)<<0.0, 0.0, 0.0, 0.0, 0.0);
-            // cv::Mat cofmat;
-            cv::Mat rvec1, tvec1;
-            cv::solvePnP(inputP,points, cammat, cofmat, rvec1, tvec1, false,cv::SOLVEPNP_IPPE_SQUARE);
-            std::cout<<rvec1<<std::endl;
-            std::cout<<tvec1<<std::endl;
+            // cv::Mat cammat=(cv::Mat_<double>(3,3)<<8.6640902038184322e+02,0.0,6.3950000000000000e+02,0,8.6640902038184322e+02,3.5950000000000000e+02,0.0,0.0,1.0);
+            // cv::Mat cofmat=(cv::Mat_<double>(1,5)<<0.0, 0.0, 0.0, 0.0, 0.0);
+            // // cv::Mat cofmat;
+            // cv::Mat rvec1, tvec1;
+            // cv::solvePnP(inputP,points, cammat, cofmat, rvec1, tvec1, false,cv::SOLVEPNP_IPPE_SQUARE);
+            // std::cout<<rvec1<<std::endl;
+            // std::cout<<tvec1<<std::endl;
         }
     }
 }

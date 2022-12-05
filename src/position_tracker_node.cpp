@@ -12,6 +12,7 @@
 #include <nvcsiapriltag/AprilTagDetectionArray.h>
 #include <nvcsiapriltag/AprilTagDetection.h>
 #include "position_tracker.h"
+#include "rclcpp/rclcpp.hpp"
 
 void uwb_callback(const nlink_parser::LinktrackAoaNodeframe0ConstPtr &msg)
 {
@@ -32,6 +33,28 @@ void apriltag_callback(const nvcsiapriltag::AprilTagDetectionArrayConstPtr &msg)
 {
     ROS_INFO("Apriltag cnt: %lu", msg->detections.size());
 }
+
+class positon_track_node : public rclcpp::Node
+{
+private:
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr px4_subscription_;
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr mocap_subscription_;
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr uwb_subscription_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+  /* data */
+public:
+  positon_track_node(/* args */);
+  ~positon_track_node();
+};
+
+positon_track_node::positon_track_node(/* args */)
+{
+}
+
+positon_track_node::~positon_track_node()
+{
+}
+
 
 
 
